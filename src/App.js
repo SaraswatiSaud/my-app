@@ -3,6 +3,15 @@ import logo from './logo.svg';
 import './App.css';
 import Test from './Test'
 
+const pStyle = {
+  color: '#333'
+}
+
+const divStyle = {
+  fontSize: '40px',
+  textAlign: 'center'
+}
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -26,8 +35,8 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-        <p> Hello
+      <div style={divStyle}>
+        <p style={pStyle}> Hello
         { this.state.name }
         { this.state.number }
         </p>
