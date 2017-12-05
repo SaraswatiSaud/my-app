@@ -12,10 +12,12 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      value: ''
+      value: null,
+      numbers: [],
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
   }
 
   handleChange(event) {
@@ -25,8 +27,15 @@ class App extends Component {
   }
 
   handleSubmit(event) {
-    alert('Submitted valus is: ' + this.state.value )
-    event.preventDefault();
+    let a = this.state.numbers
+    a.push(this.state.value)
+    // alert('Submitted valus is: ' + this.state.value )
+    this.setState({
+      numbers: a,
+      // numbers: this.state.numbers.concat(this.state.value)
+    })
+  // event.preventDefault();
+    
   }
 
   render() {
@@ -34,7 +43,7 @@ class App extends Component {
       <div style= {divStyle}>
         <input type = "text" value = {this.state.value} onChange= {this.handleChange}/>
         <button onClick = {this.handleSubmit}>Submit</button>
-        <List name = {this.state.value}/>
+        <List numbers={this.state.numbers} name= {this.state.value}/>
       </div>
     );
   }
