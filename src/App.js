@@ -22,11 +22,6 @@ class App extends Component {
     this.deleteTask = this.deleteTask.bind(this);
 
   }
-  delete(event){
-    this.setState({
-      numbers: this.state.numbers.pop(this.state.value)
-    })
-  }
   handleChange(event) {
     this.setState({
       value: event.target.value
