@@ -17,9 +17,14 @@ class App extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.delete = this.delete.bind(this);
 
   }
-
+  delete(event){
+    this.setState({
+      numbers: this.state.numbers.pop(this.state.value)
+    })
+  }
   handleChange(event) {
     this.setState({
       value: event.target.value
@@ -32,17 +37,22 @@ class App extends Component {
     // alert('Submitted valus is: ' + this.state.value )
     this.setState({
       numbers: a,
+      value: ''
       // numbers: this.state.numbers.concat(this.state.value)
     })
-  // event.preventDefault();
+  
+  event.preventDefault();
+  event.target.reset();
     
   }
 
   render() {
     return (
       <div style= {divStyle}>
-        <input type = "text" value = {this.state.value} onChange= {this.handleChange}/>
-        <button onClick = {this.handleSubmit}>Submit</button>
+        <form onSubmit={this.handleSubmit}>
+          <input type = "text" value = {this.state.value} onChange= {this.handleChange}/>
+          <input type = "submit" value= "Submit" />
+        </form>
         <List numbers={this.state.numbers} name= {this.state.value}/>
       </div>
     );
