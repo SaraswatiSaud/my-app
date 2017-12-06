@@ -1,12 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import List, { ListItem, ListItemText } from 'material-ui/List';
-// import Delete from 'material-ui-icons/Delete';
- 
+
 const pStyle = {
   marginLeft: '10px',
-  float: 'right', 
+  float: 'right',
  }
  const listStyle = {
   backgroundColor: '#f7f7f7',
@@ -17,8 +16,8 @@ const pStyle = {
   paddingRight: '10px',
   height: '40px',
  }
- 
-function ListNotes(props) {
+
+function Items(props) {
   let numbers = props.numbers;
   let listItems = numbers.map((number, index) =>
     // 3. Create button with onClick and pass props with index to define which
@@ -32,18 +31,4 @@ function ListNotes(props) {
   );
 }
 
-export default ListNotes;
-// class List extends Component {
-//     const name = props.name;
-//     const listItems = name.map((list) =>
-//         {list}
-//     );
-//     render(){
-//         return (
-//             <div>
-//                 <h1>{this.props.name}</h1>
-//                 {listItems}
-//             </div>
-//         );
-//     }
-// }
+export default Items;
