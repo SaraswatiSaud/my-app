@@ -15,7 +15,6 @@ function List(props) {
 }
 
 export default List;
-
 // class List extends Component {
 //     const name = props.name;
 //     const listItems = name.map((list) =>

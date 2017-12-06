@@ -20,8 +20,8 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
-  }
 
+  }
   handleChange(event) {
     this.setState({
       value: event.target.value
@@ -34,8 +34,10 @@ class App extends Component {
     // alert('Submitted valus is: ' + this.state.value )
     this.setState({
       numbers: a,
+      value: ''
       // numbers: this.state.numbers.concat(this.state.value)
     })
+  event.preventDefault();
   }
   // event.preventDefault();
 
@@ -47,13 +49,16 @@ class App extends Component {
     this.setState({   // 5. now modify this value to state
       numbers
     )};
+
   }
 
   render() {
     return (
-      <div style={divStyle}>
-        <input type='text' value={this.state.value} onChange={this.handleChange} />
-        <button onClick={this.handleSubmit}>Submit</button>
+      <div style= {divStyle}>
+        <form onSubmit={this.handleSubmit}>
+          <input type = "text" value = {this.state.value} onChange= {this.handleChange}/>
+          <input type = "submit" value= "Submit" />
+        </form>
         <h3 style={h3Style}>Listing the form values:</h3>
         <p>
           <List
