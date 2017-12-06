@@ -19,7 +19,7 @@ class App extends Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.deleteTask = this.deleteTask.bind(this); //New method created
+    this.deleteTask = this.deleteTask.bind(this);
   }
 
   handleChange(event){
@@ -37,12 +37,12 @@ class App extends Component {
     // alert('Submitted value is:' + this.state.value)
   }
 
+  // 1 new method created
   deleteTask(index) {
-    console.log(index)
     let numbers = this.state.numbers;
-    numbers.splice(index, 1);
-
-    this.setState({
+    numbers.splice(index, 1); // 4. index used to remove which list and 1 to remove
+                              // and 1 to remove how many element
+    this.setState({   // 5. now modify this value to state
       numbers
     })
   }
@@ -56,13 +56,12 @@ class App extends Component {
         <p>
           <List
             numbers={this.state.numbers}
-            deleteTask={this.deleteTask}
+            deleteTask={this.deleteTask} // 2. called deleteTask method here
           />
         </p>
       </div>
     );
   }
 }
-
 
 export default App;
