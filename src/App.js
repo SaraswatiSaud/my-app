@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import List from './List'
+import ListNotes from './ListNotes';
 import Button from 'material-ui/Button';
-// import Home from './Home';
+import TextField from 'material-ui/TextField';
 
 const divStyle = {
-  textAlign: 'center',
-  marginTop: '50px'
+  marginTop: '70px',
+  textAlign: 'center'
 }
 
 const h3Style = {
@@ -56,18 +56,21 @@ class App extends Component {
 
   render() {
     return (
-      <div style= {divStyle}>
-        <form onSubmit={this.handleSubmit}>
-          <input type = "text" value = {this.state.value} onChange= {this.handleChange}/>
-          <Button type='submit' raised color='primary'>Submit</Button>
-        </form>
-        <h3 style={h3Style}>Listing the form values:</h3>
+      <div>
+        <div style= {divStyle}>
+          <form onSubmit={this.handleSubmit}>
+            <textarea type = "text" value = {this.state.value} onChange= {this.handleChange}rows="6" cols="60" placeholder= "Add Your Notes"></textarea><br />
+            <Button type = "submit" raised color="primary">Submit</Button>
+          </form>
+          <h3 style={h3Style}>Listing the form values:</h3>
+        </div>
         <p>
-          <List
+          <ListNotes
             numbers={this.state.numbers}
             deleteTask={this.deleteTask} // 2. called deleteTask method here
           />
         </p>
+        {/* <TextField hintText="The hint text can be as long as you want, it will wrap."/><br /> */}
       </div>
     );
   }
