@@ -48,7 +48,7 @@ class App extends Component {
                               // and 1 to remove how many element
     this.setState({   // 5. now modify this value to state
       numbers
-    )};
+    });
 
   }
 
