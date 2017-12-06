@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import List from './List'
+import Button from 'material-ui/Button';
+// import Home from './Home';
 
 const divStyle = {
   textAlign: 'center',
@@ -57,7 +59,7 @@ class App extends Component {
       <div style= {divStyle}>
         <form onSubmit={this.handleSubmit}>
           <input type = "text" value = {this.state.value} onChange= {this.handleChange}/>
-          <input type = "submit" value= "Submit" />
+          <Button type='submit' raised color='primary'>Submit</Button>
         </form>
         <h3 style={h3Style}>Listing the form values:</h3>
         <p>
