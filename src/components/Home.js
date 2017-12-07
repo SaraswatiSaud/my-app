@@ -6,44 +6,52 @@ import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
-
+import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import Button from 'material-ui/Button';
+import red from 'material-ui/colors/red';
+import PropTypes from 'prop-types';
 
 import App from './App'
 
-const menuButton = {
-    marginLeft: -12,
-    marginRight: 20,
+const styles = theme => ({
+  palette: {
+    width: '100%',
+    primary: 'red'
+  },
+  flex: {
+    flex: 1,
   }
-
-const flex = {
-  flex: 1,
-}
+});
 
 function Home(props) {
   const { classes } = props;
 
   return (
     <div>
-      {/* <AppBar position='static' color='default'>
-        <Typography type='title'>This is Home page</Typography>
-        <Button>Button</Button>
-      </AppBar> */}
-      <AppBar position="static">
+      <AppBar position="static" className={classes.palette}>
         <Toolbar>
-          <IconButton style={menuButton} color="contrast" aria-label="Menu">
+          <IconButton color="contrast" aria-label="Menu">
             <MenuIcon />
           </IconButton>
-          <Typography type="title" color="inherit" style={flex}>
-            Title
+          <Typography type="title" color="inherit" className={classes.flex}>
+            Home
           </Typography>
           <Button color="contrast">Login</Button>
         </Toolbar>
       </AppBar>
       <App />
+      <AppBar>
+        <Typography>
+
+        </Typography>
+      </AppBar>
     </div>
 
   );
 }
 
-export default Home;
+Home.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(Home);
