@@ -22,9 +22,13 @@ function Items(props) {
   let listItems = numbers.map((number, index) =>
     // 3. Create button with onClick and pass props with index to define which
     // list is selected
-    <List style = {listStyle}>{number} <Button style= {pStyle} raised color="accent" onClick={() => {
-      props.deleteTask(props.index)
-    }}>Delete</Button></List>
+    <List style = {listStyle}>{number}
+      <Button
+        style= {pStyle}
+        raised color="accent"
+        onClick={() => {props.deleteTask(props.index)}}
+      >Delete</Button>
+    </List>
   );
   return(
     <div>{listItems}</div>

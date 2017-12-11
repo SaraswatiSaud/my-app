@@ -28,7 +28,7 @@ function Home(props) {
 
   return (
     <div>
-      <AppBar position="static" className={classes.palette}>
+      <AppBar position="static">
         <Toolbar>
           <IconButton color="contrast" aria-label="Menu">
             <MenuIcon />
@@ -40,11 +40,6 @@ function Home(props) {
         </Toolbar>
       </AppBar>
       <App />
-      <AppBar>
-        <Typography>
-
-        </Typography>
-      </AppBar>
     </div>
 
   );
