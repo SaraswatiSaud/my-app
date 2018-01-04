@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// use <MuiThemeProvider /> component in order to insert a theme in application.
 import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import AppBar from 'material-ui/AppBar';
@@ -41,7 +40,6 @@ function Home(props) {
       </AppBar>
       <App />
     </div>
-
   );
 }
 

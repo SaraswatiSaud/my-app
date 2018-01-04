@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import ListNotes from './ListNotes';
 import Button from 'material-ui/Button';
 import TextField from 'material-ui/TextField';
-import Math from './Math';
 import { createStore } from 'redux';
 
 const divStyle = {
@@ -35,24 +34,19 @@ class App extends Component {
   handleSubmit(event) {
     let a = this.state.numbers
     a.push(this.state.value)
-    // alert('Submitted valus is: ' + this.state.value )
     this.setState({
       numbers: a,
       value: ''
-      // numbers: this.state.numbers.concat(this.state.value)
     })
   event.preventDefault();
   }
 
-  // 1 new method created
   deleteTask(index) {
     let numbers = this.state.numbers;
-    numbers.splice(index, 1); // 4. index used to remove which list
-                              // and 1 to remove how many element
-    this.setState({   // 5. now modify this value to state
+    numbers.splice(index, 1);
+    this.setState({
       numbers
     });
-
   }
 
   render() {
@@ -74,11 +68,9 @@ class App extends Component {
         <p>
           <ListNotes
             numbers={this.state.numbers}
-            deleteTask={this.deleteTask} // 2. called deleteTask method here
+            deleteTask={this.deleteTask}
           />
         </p>
-        <Math />
-        {/* <TextField hintText="The hint text can be as long as you want, it will wrap."/><br /> */}
       </div>
     );
   }
