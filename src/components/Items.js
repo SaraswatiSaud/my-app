@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
-import List, { ListItem, ListItemText } from 'material-ui/List';
+import '../css/index.css';
 
 const pStyle = {
   marginLeft: '10px',
@@ -17,18 +17,66 @@ const pStyle = {
   height: '40px',
  }
 
-function Items(props) {
-  let numbers = props.numbers;
-  let listItems = numbers.map((number, index) =>
-    // 3. Create button with onClick and pass props with index to define which
-    // list is selected
-    <List style = {listStyle}>{number} <Button style= {pStyle} raised color="accent" onClick={() => {
-      props.deleteTask(props.index)
-    }}>Delete</Button></List>
-  );
-  return(
-    <div>{listItems}</div>
-  );
+class Items extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentPage: 1,
+      itemsPerPage: 2,
+    }
+  }
+
+  handleClick = (event) => {
+    this.setState({
+      currentPage: Number(event.target.id)
+    })
+  }
+
+  render() {
+    const { currentPage, itemsPerPage } = this.state;
+
+    // logic for displaying list
+    const lastIndex = currentPage * itemsPerPage;
+    const firstIndex = lastIndex - itemsPerPage;
+    let numbers = this.props.numbers;
+    const currentItems = numbers.slice(firstIndex, lastIndex);
+
+    let listItems = currentItems.map((number, index) =>
+      <p style = {listStyle}>{number}</p>
+    );
+
+    // logic for displaying page number
+    const pageNumber = [];
+    for( let i = 1; i <= Math.ceil(numbers.length / itemsPerPage ); i++) {
+      pageNumber.push(i);
+    }
+
+    const renderPage = pageNumber.map(page => {
+      return(
+        <li
+          key={page}
+          id={page}
+          onClick={this.handleClick}
+        >{page}</li>
+      )
+    })
+
+    return(
+      <div className='page-numbers'>
+        <p>{listItems}</p>
+        <ul>{renderPage}</ul>
+      </div>
+    );
+  }
 }
 
 export default Items;
+
+
+
+
+{/* <Button
+  style= {pStyle}
+  raised color="accent"
+  onClick={() => {this.props.deleteTask(this.props.index)}}
+>Delete</Button> */}
